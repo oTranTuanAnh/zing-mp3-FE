@@ -19,10 +19,7 @@ const Dropdown_listSong = ({idSong}) => {
     //         })
     //     }
     // }, []);
-    const data = {};
-    useEffect(() => {
-        setPlaylist(data)
-    }, []);
+
     const navigate = useNavigate()
     const {toggleFlag} = useContext(AppContext);
     const items = [

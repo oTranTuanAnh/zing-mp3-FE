@@ -35,12 +35,6 @@ function ModalCreateTypeSong(props) {
     //     })
     // }, [isFlag]);
 
-    const playLists = {}
-
-    useEffect(() => {
-        setPlaylistCheck(playLists)
-    }, [isFlag]);
-
     function findPlaylist(data) {
         let a = [];
         for (let i = 0; i < data.length; i++) {

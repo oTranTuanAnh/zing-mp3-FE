@@ -31,13 +31,6 @@ const Header = () => {
                 navigate("/")
             }
         }, [isFlag])
-    // const dataUser = {}
-    //
-    // useEffect(() => {
-    //     setUser(dataUser)
-    //     setImg(dataUser.avatar)
-    // }, [isFlag]);
-
 
     const [check, setCheck] = useState(false)
     const [checkSetting, setChecksetting] = useState(false)
