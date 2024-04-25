@@ -33,11 +33,6 @@ const RightSidebar = () => {
     //     })
     // }, []);
 
-    const dataSong = {}
-    useEffect(() => {
-        setSongs(dataSong)
-    }, []);
-
     return (
         <>
             <Button type="primary" onClick={showDrawer}>
