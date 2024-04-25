@@ -157,13 +157,6 @@ export default function UpdateUser() {
                                                        placeholder="Nhập địa chỉ của bạn"
                                                        className="form-control"/>
                                             </div>
-                                            <div>
-                                                <input name="img" type="file" id="form2Example27"
-                                                       className="form-control form-control-lg"
-                                                       onChange={(event) => {
-                                                           uploadFile(event.target.files[0], id)
-                                                       }}/>
-                                            </div>
                                         </div>
                                         <div className="container-login100-form-btn">
                                             <button className="login100-form-btn">
