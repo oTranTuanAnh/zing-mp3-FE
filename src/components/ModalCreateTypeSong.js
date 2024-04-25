@@ -79,7 +79,7 @@ function ModalCreateTypeSong(props) {
                         // }
                         enableReinitialize={true}
                         onSubmit={(values) => {
-                            values.url_img = localStorage.getItem("imgTypeSong")
+                            values.img_url= localStorage.getItem("imgTypeSong")
                             axios.put("http://localhost:8080/songTypes", values).then((res) => {
                                 console.log("sdasdasdádas")
                                 if (res.data === false) {
