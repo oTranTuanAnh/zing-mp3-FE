@@ -15,10 +15,10 @@ const Public = () => {
                     <SidebarLeft />
                 </div>
                 <div className='flex-auto flex flex-column border border-blue-500'>
-                    <div className={'h-[70px] flex-none px-[59px] flex items-center '} style={{backgroundColor:"#32244DFF", color: "white"}}>
+                    <div className={'h-[70px] flex-none px-[59px] flex items-center opacity-95'} style={{backgroundColor:"#32244DFF", color: "white"}}>
                         <Header/>
                     </div >
-                    <div className={'flex-auto w-full h-[1000vh]'} style={{backgroundColor:"#3C2C52FF"}}>
+                    <div className={'flex-auto w-full h-[1000vh] opacity-90'} style={{backgroundColor:"#3C2C52FF"}}>
                         <Scrollbars autoHide style={{width:'100%', height:'100%'}}>
                             <Outlet />
                         </Scrollbars>
