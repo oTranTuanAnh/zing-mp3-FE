@@ -34,7 +34,7 @@ const MenuLogOut = ({handler}) => {
         navigate('/showList')
     }
 
-    function showList(){
+    function showPlayLists(){
         handler(false);
         navigate("/showPlaylist")
     }
@@ -80,7 +80,7 @@ const MenuLogOut = ({handler}) => {
                             Nhạc của tôi
                         </div>
                     </li>
-                    <li role="button" onClick={showList}>
+                    <li role="button" onClick={showPlayLists}>
                         <div className="use-icon">
                             <BiSolidPlaylist style={{width: 20, height: 20}}/>
                         </div>

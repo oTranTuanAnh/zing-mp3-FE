@@ -4,37 +4,31 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
 import swal from "sweetalert";
-import ModalCreatePlayList from "./ModanCreatePlayList";
 import {AppContext} from "../Context/AppContext";
 
 const ShowPlaylist = () => {
-    let [checkDelete, setCheckDelete] = useState(false)
-    const idUser = localStorage.getItem("idUser")
-    let [list, setList] = useState([]);
+    const [checkDelete, setCheckDelete] = useState(false);
+    const [list, setList] = useState([]);
     const {toggleFlag} = useContext(AppContext);
     const {isFlag} = useContext(AppContext);
-    let navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const idUser = localStorage.getItem("idUser");
     useEffect(() => {
-        if (idUser == null){
-            toast.error("Bạn cần đăng nhập")
-            navigate("/login")
-        } else {
-            axios.get("http://localhost:8080/playLists/findByIdUser/" + idUser).then((res) => {
-                    if (res.data !== []){
-                        setList(res.data);
-                    } else {
-                        toast.success("Bạn chưa có PlayList nào")
-                    }
-                }
-            )
-        }
+        axios.get("http://localhost:8080/playlists/findByUserId/" + idUser).then((res) => {
+            if (res.data !== []){
+                setList(res.data);
+            } else {
+                toast.success("Bạn chưa có PlayList nào")
+            }})
     }, [isFlag]);
+
     function updatePlaylist(id) {
         navigate("/updatePlayList/" + id)
     }
 
     function deletePlaylist(id) {
-        axios.delete("http://localhost:8080/playLists/" + id).then((res) => {
+        axios.delete("http://localhost:8080/playlists/" + id).then((res) => {
             swal({
                 text: "Bạn có muốn xóa Playlist này không?",
                 icon: "info",
@@ -48,7 +42,6 @@ const ShowPlaylist = () => {
                         .then(() => {
                                 setCheckDelete(!checkDelete)
                                 toggleFlag()
-
                                 toast.success("Xóa thành công!", {autoClose: 700})
                             }
                         )
@@ -63,7 +56,6 @@ const ShowPlaylist = () => {
                 <div className="name_playlist" style={{paddingBottom: 20, fontSize: 30, paddingLeft: 10}}>
                     Danh sách Playlist
                 </div>
-                <button><ModalCreatePlayList/></button>
                 <table className="table" style={{color: "white"}}>
                     <thead>
                     <tr>
@@ -78,9 +70,9 @@ const ShowPlaylist = () => {
                             <tr>
                                 <th scope="row">{key + 1}</th>
                                 <td onClick={() => {
-                                    navigate("/viewPlaylist/" + i.id)
+                                    // navigate("/viewPlaylist/" + i.id)
                                 }}>
-                                    <button style={{color:"white"}}>{i.namePlayList}</button>
+                                    <button style={{color:"white"}}>{i.name}</button>
                                 </td>
                                 <td>
                                     <button onClick={()=>{updatePlaylist(i.id)}}>
@@ -94,11 +86,11 @@ const ShowPlaylist = () => {
                                 </td>
                             </tr>
                         )
-                    })}
+                    })
+                    }
                     </tbody>
                 </table>
             </div>
-
         </>
     );
 };
