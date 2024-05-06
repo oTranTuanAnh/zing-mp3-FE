@@ -64,7 +64,7 @@ const ModalCreatePlayList = () => {
                                 toast.success("Tạo playlist thành công", {
                                     position: toast.POSITION.BOTTOM_RIGHT
                                 })
-                                // navigate("/showPlaylist")
+                                navigate("/showPlaylist")
                                toggleFlag()
                             })
                         }}>
@@ -87,7 +87,7 @@ const ModalCreatePlayList = () => {
                     </Form>
                 </Formik>
             </Modal>
-        </>
+</>
     );
 };
 

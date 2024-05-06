@@ -79,7 +79,7 @@ const ModalCreateSong = () => {
 
     return (
         <>
-            <Modal width={1000} title="Tạo bài hát mới" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
+            <Modal width={1000} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
                 <Formik initialValues={{
                     title: "",
                     description:"",
@@ -114,17 +114,19 @@ const ModalCreateSong = () => {
                 }}>
                     <Form>
                         <div className="card">
+                            <p className="card-header text-gray-800 text-xl">Tải nhạc lên</p>
                             <div className="row align-items-center no-gutters">
                                 <div className="col-md-5">
                                     <img name="url_img"
-                                         src= {songs.img_url == null? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                                         src={songs.img_url == null ? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                                              : songs.img_url}
                                          className="img-fluid" alt=""/>
                                 </div>
                                 <div className="col-md-7">
                                     <div className="card-body">
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="nameSong">Tên bài hát (<span className="text-danger">*</span>)</label>
+                                            <label className="form-label" htmlFor="nameSong">Tên bài hát (<span
+                                                className="text-danger">*</span>)</label>
                                             <Field name="title" type="text" id="nameSong" placeholder="Nhập tên bài hát"
                                                    className="form-control"/>
                                         </div>
@@ -141,7 +143,8 @@ const ModalCreateSong = () => {
                                         </div>
                                         <div className="form-group mb-2">
                                             <label className="form-label" htmlFor="description">Mô tả</label>
-                                            <Field name="description" component="textarea" id="description" placeholder="Nhập mô tả"
+                                            <Field name="description" component="textarea" id="description"
+                                                   placeholder="Nhập mô tả"
                                                    className="form-control"/>
                                         </div>
                                         <div className="form-group mb-2">
@@ -162,18 +165,22 @@ const ModalCreateSong = () => {
                                         </div>
                                         <div className="form-group mb-2">
                                             <label className="form-label" htmlFor="img_url">Ảnh</label>
-                                            <input type="file" id="img_url" className="form-control" onChange={(event)=>{
-                                                uploadFileImg(event.target.files[0])
-                                            }}/>
+                                            <input type="file" id="img_url" className="form-control"
+                                                   onChange={(event) => {
+                                                       uploadFileImg(event.target.files[0])
+                                                   }}/>
                                         </div>
                                         <div className="form-group mb-2">
                                             <label className="form-label" htmlFor="song_url">File nhạc</label>
-                                            <input type="file" id="song_url" className="form-control" onChange={(event)=>{
-                                                uploadFileSong(event.target.files[0])
-                                            }}/>
+                                            <input type="file" id="song_url" className="form-control"
+                                                   onChange={(event) => {
+                                                       uploadFileSong(event.target.files[0])
+                                                   }}/>
                                         </div>
                                         <div className="my-4 text-center">
-                                            <button type="button" className="btn btn-default" onClick={handleCancel}>Quay lại</button>
+                                            <button type="button" className="btn btn-default"
+                                                    onClick={handleCancel}>Quay lại
+                                            </button>
                                             <button type="submit" className="btn btn-primary">Tạo bài hát</button>
                                         </div>
                                     </div>
