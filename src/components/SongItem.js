@@ -63,14 +63,15 @@ const SongItem = ({thumbnail, title, artists, sid, author, countLikes, countList
                             <p className="mb-2 text-slate-500 group-hover:text-black text-sm">{author}</p>
                         </div>
                     </div>
-                    <div className={'flex flex-col'} onClick={()=>handleLike()}>
-                        {checkLike ? <IoHeartSharp size={20}/> : <IoHeartOutline size={20}/>}
-                        <FaHeadphonesAlt size={20}/>
+                    <div className="grid grid-cols-2 grid-rows-4 w-10 justify-center items-center text-center opacity-50">
+                        <div >
+                            {checkLike ? <IoHeartSharp size={16}/> : <IoHeartOutline size={16}/>}
+                        </div>
+                        <div>{countLikes}</div>
+                        <div> <FaHeadphonesAlt size={15}/></div>
+                        <div>{countListen}</div>
                     </div>
-                    <div className={'flex flex-col mx-2'}>
-                        <span>{countLikes}</span>
-                        <span>{countListen}</span>
-                    </div>
+
                     <div className="flex">
                         <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
                             {check ? <SongMenu idSong={sid}/> : <Dropdown_song idSong={sid}/>}
