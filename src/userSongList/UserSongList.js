@@ -33,8 +33,9 @@ export default function UserSongList() {
                             artists={item.singer}
                             author={item.author}
                             countLikes={item.countLike}
+                            countListen={item.listenCount}
                             releaseDate={new Date()}
-                            check={true}
+                            check={false}
                         />
 
                     ))}

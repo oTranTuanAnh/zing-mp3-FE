@@ -5,6 +5,7 @@ import {TbPasswordUser} from "react-icons/tb";
 import {HiOutlinePlus} from "react-icons/hi";
 import {AiOutlineLogout} from "react-icons/ai";
 import {useNavigate} from "react-router-dom";
+import {RiFolderMusicLine} from "react-icons/ri";
 
 const MenuLogOut = ({handler}) => {
     const navigate = useNavigate()
@@ -62,10 +63,10 @@ const MenuLogOut = ({handler}) => {
                     </li>
                     <li role="button" onClick={showListSong}>
                         <div className="use-icon">
-                            <HiOutlinePlus style={{width:20, height:20}} />
+                            <RiFolderMusicLine style={{width:20, height:20}} />
                         </div>
                         <div className="use-content">
-                            D/S bài hát
+                            Nhạc của tôi
                         </div>
                     </li>
                     <li role="button" onClick={logOut}>

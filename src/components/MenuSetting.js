@@ -50,7 +50,7 @@ const MenuSetting = ({handler}) => {
                             <LiaAddressBook />
                         </div>
                         <div className="content">
-                            Tỏa thuận sử dụng
+                            Thỏa thuận sử dụng
                         </div>
                         <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />
