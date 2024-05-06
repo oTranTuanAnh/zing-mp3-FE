@@ -71,7 +71,6 @@ const SongItem = ({thumbnail, title, artists, sid, author, countLikes, countList
                         <div> <FaHeadphonesAlt size={15}/></div>
                         <div>{countListen}</div>
                     </div>
-
                     <div className="flex">
                         <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
                             {check ? <SongMenu idSong={sid}/> : <Dropdown_song idSong={sid}/>}

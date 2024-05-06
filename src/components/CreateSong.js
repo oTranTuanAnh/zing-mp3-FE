@@ -103,7 +103,6 @@ const ModalCreateSong = () => {
                     }
                     console.log("idSOngtype: ", value)
                     axios.post("http://localhost:8080/songs/user/create", value).then((res)=>{
-                        console.log(res.data)
                         toggleFlag()
                         toast.success("Tạo bài hát thành công", {
                             position: toast.POSITION.BOTTOM_RIGHT

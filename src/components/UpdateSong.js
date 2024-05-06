@@ -41,7 +41,6 @@ export default function UpdateSong() {
                 setSongUrl(url);
                 console.log("song uploaded successfully", url);
                 console.log("song uploaded successfully", songUrl);
-                songs.song_url = url;
                 localStorage.setItem("song_url", url);
             });
         });
