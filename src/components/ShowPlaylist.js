@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
 import swal from "sweetalert";
-import ModalCreatePlayList from "./modanCreatePlayList";
+import ModalCreatePlayList from "./ModanCreatePlayList";
 import {AppContext} from "../Context/AppContext";
 
 const ShowPlaylist = () => {

@@ -9,19 +9,7 @@ import {useNavigate} from "react-router-dom";
 import {AppContext} from "../Context/AppContext";
 
 const ModalCreatePlayList = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const  handleOk = () => {
-        setIsModalOpen(false);
-    };
-
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
     const navigate = useNavigate();
     const id_user = localStorage.getItem("idUser")
     const [listPlaylistCheck, setPlaylistCheck] = useState([]);
@@ -41,12 +29,24 @@ const ModalCreatePlayList = () => {
         }
         return a;
     }
+
+    const [isModalOpen, setIsModalOpen] = useState(true);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const  handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+        navigate("/")
+    };
     return (
         <>
-            <Button type="primary" onClick={showModal}>
-                 Thêm PlayList
-            </Button>
-            <Modal title="Tạo PlayList cho riêng mình" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            <Modal width={1000} title="Tạo bài hát mới" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
                 <Formik initialValues={{
                     namePlayList: "",
                     id_users: {

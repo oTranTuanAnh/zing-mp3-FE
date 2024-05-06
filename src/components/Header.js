@@ -58,14 +58,14 @@ const Header = () => {
                         </div>
                     </div>
                     <div style={{display: "flex"}}>
-                        <div className="dev_setting">
-                            <button type="button text-white" onClick={() => {
-                                setChecksetting(!checkSetting)
-                                setCheck(false)
-                            }}>
-                                <CiSettings style={{width: 40, height: 40, marginTop: 5, fill: 'white'}}/>
-                            </button>
-                        </div>
+                        {/*<div className="dev_setting">*/}
+                        {/*    <button type="button text-white" onClick={() => {*/}
+                        {/*        setChecksetting(!checkSetting)*/}
+                        {/*        setCheck(false)*/}
+                        {/*    }}>*/}
+                        {/*        <CiSettings style={{width: 40, height: 40, marginTop: 5, fill: 'white'}}/>*/}
+                        {/*    </button>*/}
+                        {/*</div>*/}
                         <div className="dev_logout">
                             <button onClick={() =>{
                                 setCheck(!check)
@@ -106,14 +106,14 @@ const Header = () => {
                             </div>
                         </div>
                         <div style={{display: "flex"}}>
-                            <div className="dev_setting" >
-                                <button type="button text-white" onClick={() => {
-                                    setChecksetting(!checkSetting)
-                                    setCheck(false)
-                                }}>
-                                    <CiSettings style={{width: 40, height: 40, marginTop: 5, marginRight:20, fill: "white"}}/>
-                                </button>
-                            </div>
+                            {/*<div className="dev_setting" >*/}
+                            {/*    <button type="button text-white" onClick={() => {*/}
+                            {/*        setChecksetting(!checkSetting)*/}
+                            {/*        setCheck(false)*/}
+                            {/*    }}>*/}
+                            {/*        <CiSettings style={{width: 40, height: 40, marginTop: 5, marginRight:20, fill: "white"}}/>*/}
+                            {/*    </button>*/}
+                            {/*</div>*/}
                             <div className="dev_logout">
                                 <button onClick={() =>{
                                     setCheck(!check)
@@ -151,15 +151,15 @@ const Header = () => {
                     </div>
                 </div>
                 <div style={{display: "flex"}}>
-                    <div className="dev_setting items-center mt-2 ml-2">
-                        <button type="button" onClick={() => {
-                            setChecksetting(!checkSetting)
-                            setCheck(false)
-                        }}>
-                            <span className={'text-white'}><CiSettings size={35}/>  </span>
+                    {/*<div className="dev_setting items-center mt-2 ml-2">*/}
+                    {/*    <button type="button" onClick={() => {*/}
+                    {/*        setChecksetting(!checkSetting)*/}
+                    {/*        setCheck(false)*/}
+                    {/*    }}>*/}
+                    {/*        <span className={'text-white'}><CiSettings size={35}/>  </span>*/}
 
-                        </button>
-                    </div>
+                    {/*    </button>*/}
+                    {/*</div>*/}
                     <div className="dev_logout items-center mt-2 ml-2">
                         <button onClick={() => {
                             setCheck(!check)
