@@ -1,19 +1,23 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {SongItem} from "./index";
 import store from "../store/Store";
-import {findAllSong} from "../service/SongService";
+import {findAllSong, newSongsList} from "../service/SongService";
+import {AppContext} from "../Context/AppContext";
+import Dropdown_song from "./Dropdown_song";
 
 const NewRelease = () => {
-    const [isActive, setisActive] = useState(0)
-    const dispatch = useDispatch()
-    const songs = useSelector((store)=>{
-        console.log("lisst song: ", store.songStore.songs)
-        return store.songStore.songs
+    const [isActive, setisActive] = useState(0);
+    const {isFlag} = useContext(AppContext);
+    const dispatch = useDispatch();
+    const songsLates = useSelector((store)=>{
+        console.log("list song: ", store.songStore.songsLates)
+        return store.songStore.songsLates
     })
+
     useEffect(() => {
-        dispatch(findAllSong())
-    }, []);
+        dispatch(newSongsList())
+    }, [isFlag]);
 
     return (
         <div className='mt-12 px-[59px] flex flex-col gap-5' style={{color: "white"}}>
@@ -30,8 +34,6 @@ const NewRelease = () => {
                     className={`py-1 px-4 rounded-l-full rounded-r-full border border-gray-400 bg-transparent ${isActive === 0 && 'bg-[#0E8080] text-white'}`}
                 >
                     VIỆT NAM
-
-
                 </button>
                 <button
                     onClick={() =>{
@@ -45,16 +47,18 @@ const NewRelease = () => {
                 </button>
             </div>
             <div className={'row'}>
-                {songs?.map(item => (
-                    <SongItem
-                        sid={item.id}
-                        key = {item.id}
-                        thumbnail={item.url_img}
-                        title={item.nameSong}
-                        artists={item.singer}
-                        releaseDate={new Date()}
-
-                    />
+                {songsLates?.map(item => (
+                        <SongItem
+                            sid={item.id}
+                            key = {item.id}
+                            thumbnail={item.img_url}
+                            title={item.title}
+                            artists={item.singer}
+                            author={item.author}
+                            countLikes = {item.countLike}
+                            releaseDate={new Date()}
+                            check = {false}
+                        />
                 ))}
             </div>
         </div>

@@ -65,18 +65,18 @@ function ModalCreateTypeSong(props) {
             <Modal title="Tạo thêm loại nhạc" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <Formik initialValues={{
                     name: "",
-                    url_img: ""
+                    img_url: ""
                 }}
-                        // validationSchema={
-                        //     require("yup").object().shape({
-                        //         name: require("yup")
-                        //             .string()
-                        //             .matches(/^[a-zA-Z0-9_]+$/, "Tên không hợp lệ")
-                        //             .required("Vui lòng nhập tên Playlist").test('unique', 'Playlist đã tồn tại', (value) => {
-                        //                 return !listPlaylistCheck.includes(value);
-                        //             }),
-                        //     })
-                        // }
+                    // validationSchema={
+                    //     require("yup").object().shape({
+                    //         name: require("yup")
+                    //             .string()
+                    //             .matches(/^[a-zA-Z0-9_]+$/, "Tên không hợp lệ")
+                    //             .required("Vui lòng nhập tên Playlist").test('unique', 'Playlist đã tồn tại', (value) => {
+                    //                 return !listPlaylistCheck.includes(value);
+                    //             }),
+                    //     })
+                    // }
                         enableReinitialize={true}
                         onSubmit={(values) => {
                             values.img_url= localStorage.getItem("imgTypeSong")

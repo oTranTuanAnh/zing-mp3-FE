@@ -1,10 +1,12 @@
 import {Field, Form, Formik} from "formik";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {storage} from "../FireBase/FirebaseConfig";
 import axios from "axios";
 import {toast} from "react-toastify";
 import {useNavigate, useParams} from "react-router-dom";
+import {Modal} from "antd";
+import {AppContext} from "../Context/AppContext";
 export default function UpdateSong() {
     const [imageUrl, setImageUrl] = useState(undefined);
     const [songUrl, setSongUrl] = useState(undefined);
@@ -14,6 +16,8 @@ export default function UpdateSong() {
     const idSong = useParams();
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(true);
+    const {toggleFlag} = useContext(AppContext);
+
 
     const uploadFileImg = (image) => {
         if (image === null) return
@@ -72,6 +76,7 @@ export default function UpdateSong() {
 
     return (
         <>
+            <Modal width={1000} title="Tạo bài hát mới" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
             <Formik initialValues={
                 songs
             }
@@ -80,18 +85,22 @@ export default function UpdateSong() {
                         value.img_url = localStorage.getItem("img_url");
                         value.song_url = localStorage.getItem("song_url");
                         axios.put("http://localhost:8080/songs/user/update", value).then((res)=>{
+                            toggleFlag();
                             toast.success(" Cập nhật hát thành công ", {
                                 position: toast.POSITION.BOTTOM_RIGHT
                             })
                         })
+                        setIsModalOpen(false);
+                        navigate("/showList")
+
                     }}>
                 <Form>
                     <div className="card">
                         <div className="row align-items-center no-gutters">
                             <div className="col-md-5">
                                 <img name="url_img"
-                                     src= {songs.url_img == null? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                                         : songs.url_img}
+                                     src= {songs.img_url == null? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                                         : songs.img_url}
                                      className="img-fluid" alt=""/>
                             </div>
                             <div className="col-md-7">
@@ -155,6 +164,7 @@ export default function UpdateSong() {
                     </div>
                 </Form>
             </Formik>
+            </Modal>
         </>
     )
 }
