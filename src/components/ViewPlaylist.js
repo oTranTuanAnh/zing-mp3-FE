@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
-import {Field, Form, Formik} from "formik";
 import axios from "axios";
 import {toast} from "react-toastify";
-import {IoAddOutline} from "react-icons/io5";
-import {MdDeleteOutline, MdOutlineBrowserUpdated} from "react-icons/md";
+import {MdDeleteOutline} from "react-icons/md";
 
 function ViewPlaylist(props) {
     const navigate = useNavigate();

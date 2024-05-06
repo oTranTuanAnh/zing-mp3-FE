@@ -1,10 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, Modal} from 'antd';
-import {AiOutlinePlus} from "react-icons/ai";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import axios from "axios";
 import {toast} from "react-toastify";
-import {IoAddOutline} from "react-icons/io5";
 import {useNavigate} from "react-router-dom";
 import {AppContext} from "../Context/AppContext";
 
@@ -28,11 +26,11 @@ const ModalCreatePlayList = () => {
     const {isFlag} = useContext(AppContext);
     const {toggleFlag} = useContext(AppContext);
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:8080/playLists').then(res => {
-    //         setPlaylistCheck(findPlaylist(res.data)) ;
-    //     })
-    // }, [ isFlag]);
+    useEffect(() => {
+        axios.get('http://localhost:8080/playlists').then(res => {
+            setPlaylistCheck(findPlaylist(res.data)) ;
+        })
+    }, [ isFlag]);
 
     function findPlaylist (data) {
         let a = [];
@@ -87,7 +85,7 @@ const ModalCreatePlayList = () => {
                             <div className="col-auto">
                                 <h5>Tên PlayList</h5>
                                 <ErrorMessage style={{color:'red'}}  className={'formik-error-message'} name="namePlayList" component="div"/>
-                                <Field name="namePlayList" type="text" id="input" className="form-control"
+                                <Field name="name" type="text" id="input" className="form-control"
                                        aria-describedby="passwordHelpInline"/><br/>
                                 <div className="col-auto">
                                     <button type="submit" className="btn btn-primary">Thêm</button>

@@ -13,7 +13,7 @@ const ShowPlaylist = () => {
     let [list, setList] = useState([]);
     const {toggleFlag} = useContext(AppContext);
     const {isFlag} = useContext(AppContext);
-    let navigate = useNavigate()
+    const navigate = useNavigate()
     useEffect(() => {
         if (idUser == null){
             toast.error("Bạn cần đăng nhập")
@@ -44,14 +44,11 @@ const ShowPlaylist = () => {
                 },
             }).then(r => {
                 if (r) {
-                    axios.delete("http://localhost:8080/songs/" + id)
-                        .then(() => {
-                                setCheckDelete(!checkDelete)
-                                toggleFlag()
-
-                                toast.success("Xóa thành công!", {autoClose: 700})
-                            }
-                        )
+                    axios.delete("http://localhost:8080/songs/" + id).then(() => {
+                        setCheckDelete(!checkDelete)
+                        toggleFlag()
+                        toast.success("Xóa thành công!", {autoClose: 700})
+                    })
                 }
             })
         })
