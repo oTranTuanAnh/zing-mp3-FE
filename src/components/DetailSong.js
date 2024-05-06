@@ -69,17 +69,15 @@ export default function SongDetail (){
                             <h2 className="text-lg font-bold mb-4 text-white">Comments</h2>
                             {commentList?.map((item) => (
                                 <div className="flex flex-col space-y-4 mb-2">
-                                    <div className="bg-white p-3 rounded-xl shadow-md">
+                                    <div className="bg-[#DDE4E4] p-3 rounded-xl shadow-md">
                                         <div className="flex flex-row space-y-4 mb-2">
                                             <h3 className="flex-grow text-gray-700 text-lg font-bold">{item.user.userName}</h3>
                                             {item.user.id == userId?    <MdClear size={20} className="text-gray-400 m-0" style={{display: "block"}} onClick={()=>{handleDeleteComment(item.id)}}/> :
                                                 <MdClear size={20} className="text-gray-400 m-0" style={{display: "none"}}/>}
 
                                         </div>
-
                                         <p className="text-gray-700 text-xs mb-2">Posted on {item.createDate.substring(0, 19)}</p>
                                         <p className="text-gray-700 text-base">{item.textCom}</p>
-
                                     </div>
                                 </div>
                             ))}
@@ -94,7 +92,7 @@ export default function SongDetail (){
                             <div className="rounded-t-lg">
                                 <label htmlFor="comment" className="sr-only">Your comment</label>
                                 <textarea id="comment" rows="4"
-                                          className="w-full px-0 text-sm text-gray-600 bg-white rounded-xl focus:ring-0 dark:text-gray-600 dark:placeholder-gray-500 p-2"
+                                          className="w-full px-0 text-sm text-gray-600 bg-[#DDE4E4] rounded-xl focus:ring-0 dark:text-gray-600 dark:placeholder-gray-500 p-2"
                                           placeholder="Write a comment..." required
                                           name={"textCom"}
                                           value={formik.values.comment.textCom}

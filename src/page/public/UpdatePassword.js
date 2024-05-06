@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import * as Yup from "yup";
+import {Modal} from "antd";
 
 
 export default function UpdatePass() {
@@ -11,9 +12,7 @@ export default function UpdatePass() {
     const id = localStorage.getItem("idUser");
     const [check , setCheck] = useState(false)
     const [user, setUser] = useState({})
-    const handleCancel = () => {
-        navigate("/")
-    };
+    const [isModalOpen, setIsModalOpen] = useState(true);
     const token = localStorage.getItem('token'); // Lấy token từ Local Storage
 
     const config = {
@@ -30,8 +29,22 @@ export default function UpdatePass() {
             })
         }
     }, [check])
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+        navigate("/")
+    };
     return (
         <>
+            <Modal width={1000} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
+                   footer={null}>
             <Formik
                 initialValues={{}}
                 validationSchema={
@@ -53,35 +66,36 @@ export default function UpdatePass() {
                 }
                 enableReinitialize={true}>
                 <Form>
-
                         <div className="d-flex justify-content-center">
                             <div className="card mt-5 w-50">
-                                <div className="card-header">Đổi mật khẩu</div>
+                                <p className="card-header text-gray-800 text-xl">Đổi mật khẩu</p>
                                 <div className="card-body">
                                     <div className="form-outline mb-4">
                                         <label htmlFor="oldPassword">Mật khẩu cũ</label>
-                                        <Field className="form-control" id="oldPassword" name={'oldPassword'}
+                                        <Field className="form-control text-f" id="oldPassword" name={'oldPassword'}
                                                type='password' placeholder="Nhập mật khẩu cũ" required/>
-                                        <ErrorMessage className={'text-danger'} name="oldPassword" component="div"/>
+                                        <ErrorMessage className={'text-danger text-f'} name="oldPassword"
+                                                      component="div"/>
                                     </div>
                                     <div className="form-outline mb-4">
                                         <label htmlFor="password">Mật khẩu mới</label>
-                                        <Field className="form-control" id="password" name={'password'}
+                                        <Field className="form-control text-f" id="password" name={'password'}
                                                type='password' placeholder="Nhập mật khẩu mới"/>
-                                        <ErrorMessage className={'text-danger'} name="password" component="div"/>
+                                        <ErrorMessage className={'text-danger text-f'} name="password" component="div"/>
                                     </div>
                                     <div className="form-outline mb-4">
                                         <label htmlFor="confirmPassword">Nhập lại mật khẩu</label>
-                                        <Field className="form-control" id="confirmPassword"
+                                        <Field className="form-control text-f" id="confirmPassword"
                                                name={'confirmPassword'}
                                                placeholder="Nhập lại mật khẩu" type='password'/>
-                                        <ErrorMessage className={'text-danger'} name="confirmPassword" component="div"/>
+                                        <ErrorMessage className={'text-danger text-f'} name="confirmPassword"
+                                                      component="div"/>
                                     </div>
-                                    <div className="container-login100-form-btn">
-                                        <button className="login100-form-btn">
+                                    <div className="text-center">
+                                        <button className="login100-form-btn w-[50%] m-auto">
                                             Đổi mật khẩu
                                         </button>
-                                        <button type="button" className="btn btn-default"
+                                        <button type="button" className="mt-2 text-base text-f"
                                                 onClick={handleCancel}>Quay lại
                                         </button>
                                     </div>
@@ -90,6 +104,7 @@ export default function UpdatePass() {
                         </div>
                 </Form>
             </Formik>
+            </Modal>
         </>
     )
 

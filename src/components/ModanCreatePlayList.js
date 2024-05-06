@@ -45,8 +45,8 @@ const ModalCreatePlayList = () => {
         navigate("/")
     };
     return (
-        <>
-            <Modal width={1000} title="Tạo bài hát mới" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
+
+            <Modal className="bg-blue-300" width={400} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
                 <Formik initialValues={{
                     namePlayList: "",
                     id_users: {
@@ -80,24 +80,24 @@ const ModalCreatePlayList = () => {
                             })
                         }}>
                     <Form>
-                        <div className="row g-3 align-items-center" style={{width: 400, marginLeft: 20, display:'align-items-center'  }}>
-                            <div className="col-auto">
+                        <div className="row g-3 align-items-center p-4 bg-blue-300" style={{display:'align-items-center'}}>
+                            <div>
                                 <label htmlFor="inputPassword6" className="col-form-label"></label>
                             </div>
-                            <div className="col-auto">
-                                <h5>Tên PlayList</h5>
-                                <ErrorMessage style={{color:'red'}}  className={'formik-error-message'} name="namePlayList" component="div"/>
-                                <Field name="namePlayList" type="text" id="input" className="form-control"
-                                       aria-describedby="passwordHelpInline"/><br/>
-                                <div className="col-auto">
-                                    <button type="submit" className="btn btn-primary">Thêm</button>
+                            <div className="w-full">
+                                <h5 className="text-xl mb-4 text-f">Tạo PlayList mới</h5>
+                                <ErrorMessage style={{color:'red'}}  className={'formik-error-message mb-2 text-f'} name="namePlayList" component="div"/>
+                                <Field name="namePlayList" type="text" className="form-control text-f rounded-full w-full"
+                                       placeholder="Nhập tên playlist"/><br/>
+                                <div className="text-center">
+                                    <button type="submit" className="text-f rounded-full w-50 h-10">Tạo mới</button>
                                 </div>
                             </div>
                         </div>
                     </Form>
                 </Formik>
             </Modal>
-        </>
+
     );
 };
 

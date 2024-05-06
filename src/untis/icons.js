@@ -20,6 +20,10 @@ import { IoHeartSharp } from "react-icons/io5";
 import { FaHeadphonesAlt } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 import { RiFolderMusicLine } from "react-icons/ri";
+import { BiSolidPlaylist } from "react-icons/bi";
+import { FiUpload } from "react-icons/fi";
+import { AiOutlineEllipsis } from "react-icons/ai";
+
 
 const icons = {
     MdOutlineLibraryMusic,
@@ -42,8 +46,10 @@ const icons = {
     IoHeartOutline,
     FaHeadphonesAlt,
     IoHeartSharp,MdClear,
-    RiFolderMusicLine
-
+    RiFolderMusicLine,
+    BiSolidPlaylist,
+    FiUpload,
+    AiOutlineEllipsis
 
 }
 export default icons

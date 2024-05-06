@@ -8,7 +8,7 @@ const activeStyle ='py-2 px-[25px] font-bold text-[#0F7070] text-[13px]  flex ga
 const SidebarLeft = () => {
     const naviagte = useNavigate()
     return (
-        <div onClick={() => naviagte(path.HOME)} className={'flex h-full flex-col bg-[#DDE4E4]'} style={{backgroundColor: '#493A60FF'}}>
+        <div onClick={() => naviagte(path.HOME)} className={'flex h-full flex-col'} style={{backgroundColor: '#231b2e'}}>
             <div className={'w-full h-[70px] py-[15px] px-[25px] flex justify-start items-center cursor-pointer'}>
                 <img src={logo} alt="" className={'w-[120px] h-10'}/>
             </div>

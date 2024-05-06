@@ -41,9 +41,9 @@ const SongItem = ({thumbnail, title, artists, sid, author, countLikes, countList
     };
     return (
         <div className="col-md-4 song-item">
-            <div onClick={handleClick}>
+            <div onClick={()=>handleClick()}>
                 <div
-                    className={'group flex p-3 rounded-md hover:bg-main-200 hover:border border-gray-200'}>
+                    className={'group flex p-3 rounded-md hover:bg-white hover:bg-opacity-10'}>
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
                         <img
                             onClick={() => {
@@ -56,24 +56,25 @@ const SongItem = ({thumbnail, title, artists, sid, author, countLikes, countList
                             <div className="flex justify-between text-base font-medium">
                                 <h3>
                                     <Link to={`/detailSong/${sid}`}
-                                          className="text-slate-900 group-hover:text-black font-semibold">{title}</Link>
+                                          className="text-slate-900 font-semibold">{title}</Link>
                                 </h3>
                             </div>
-                            <p className="mb-2 text-slate-500 group-hover:text-black text-sm">{artists}</p>
-                            <p className="mb-2 text-slate-500 group-hover:text-black text-sm">{author}</p>
+                            <p className="mb-2 text-slate-500 text-sm">{artists}</p>
+                            <p className="mb-2 text-slate-500 text-sm">{author}</p>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 grid-rows-4 w-10 justify-center items-center text-center opacity-50">
-                        <div >
-                            {checkLike ? <IoHeartSharp size={16}/> : <IoHeartOutline size={16}/>}
+                    <div  className="w-15">
+                        <div className="like-item grid grid-cols-2 grid-rows-4 w-10 justify-center items-center text-center opacity-50">
+                            <div onClick={() => handleLike()}>
+                                {checkLike ? <IoHeartSharp size={16}/> : <IoHeartOutline size={16}/>}
+                            </div>
+                            <div>{countLikes}</div>
+                            <div><FaHeadphonesAlt size={15}/></div>
+                            <div>{countListen}</div>
                         </div>
-                        <div>{countLikes}</div>
-                        <div> <FaHeadphonesAlt size={15}/></div>
-                        <div>{countListen}</div>
                     </div>
-
-                    <div className="flex">
-                        <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                    <div className="w-10">
+                        <button className="drop-menu font-medium text-indigo-600 hover:text-indigo-500 py-3 px-2 ml-2">
                             {check ? <SongMenu idSong={sid}/> : <Dropdown_song idSong={sid}/>}
                         </button>
                     </div>

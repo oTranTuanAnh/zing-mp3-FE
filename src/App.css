@@ -1,13 +1,48 @@
 
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 * {
     padding: 0;
     margin: 0;
 }
+.text-f{
+    font-family: 'Montserrat', sans-serif;
+}
 html {
     width: 100%;
     min-height: 100vh;
+}
+.ant-modal-content{
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    margin: auto;
+}
+.like-item{
+    display: none;
+}
+.drop-menu{
+    display: none;
+}
+.song-item:hover .drop-menu{
+    display: inline-block;
+}
+.song-item:hover .like-item{
+    display: grid;
+}
+
+.glass{
+    /* From https://css.glass */
+    background: rgba(23, 15, 35, 0.39);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(23, 15, 35, 0.05);
 }
 
 .App-header {

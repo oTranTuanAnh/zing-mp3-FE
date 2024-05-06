@@ -3,7 +3,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {AppContext} from "../Context/AppContext";
 import {Button, Dropdown} from "antd";
-import {AiOutlineMore} from "react-icons/ai";
+import {AiOutlineEllipsis,} from "react-icons/ai";
 import {toast} from "react-toastify";
 
 
@@ -51,7 +51,7 @@ function DropdownSong({idSong}) {
                 placement="top"
                 arrow
             >
-                <Button style={{backgroundColor: "#3C2C52", border: "none", color: "white"}} ><AiOutlineMore/></Button>
+                <AiOutlineEllipsis size={20} className="text-white"/>
             </Dropdown>
         </>
     )

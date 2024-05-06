@@ -5,7 +5,9 @@ import {TbPasswordUser} from "react-icons/tb";
 import {HiOutlinePlus} from "react-icons/hi";
 import {AiOutlineLogout} from "react-icons/ai";
 import {useNavigate} from "react-router-dom";
-import {RiFolderMusicLine, RiSlideshow2Line} from "react-icons/ri";
+import {RiFolderMusicLine} from "react-icons/ri";
+import {BiSolidPlaylist} from "react-icons/bi";
+import {FiUpload} from "react-icons/fi";
 
 const MenuLogOut = ({handler}) => {
     const navigate = useNavigate()
@@ -64,10 +66,10 @@ const MenuLogOut = ({handler}) => {
                     </li>
                     <li role="button" onClick={createSong}>
                         <div className="use-icon">
-                            <HiOutlinePlus style={{width: 20, height: 20}}/>
+                            <FiUpload style={{width: 20, height: 20}}/>
                         </div>
                         <div className="use-content">
-                            Thêm bài hát
+                            Tải lên
                         </div>
                     </li>
                     <li role="button" onClick={showListSong}>
@@ -80,7 +82,7 @@ const MenuLogOut = ({handler}) => {
                     </li>
                     <li role="button" onClick={showList}>
                         <div className="use-icon">
-                            <RiSlideshow2Line style={{width: 20, height: 20}}/>
+                            <BiSolidPlaylist style={{width: 20, height: 20}}/>
                         </div>
                         <div className="use-content">
                             D/S PlayList

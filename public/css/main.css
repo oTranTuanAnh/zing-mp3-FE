@@ -134,14 +134,14 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat;
   font-size: 13px;
   line-height: 1.5;
   color: #999999;
 }
 
 .txt2 {
-  font-family: Poppins-Regular;
+  font-family: Montserrat;
   font-size: 13px;
   line-height: 1.5;
   color: #666666;
@@ -153,12 +153,15 @@ iframe {
 
 .limiter {
   width: 100%;
-  margin: 0 auto;
+  height: 85vh;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .container-login100 {
-  width: 100%;  
-  min-height: 100vh;
+  height: 800px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -180,15 +183,15 @@ iframe {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 120px 50px 33px 50px;
+  justify-content: center;
+  padding: 50px 50px 33px 50px;
+  align-items: center;
 }
 
 /*------------------------------------------------------------------
