@@ -30,7 +30,7 @@ const ShowListSong = () => {
                                 countLikes={item.countLike}
                                 countListen={item.listenCount}
                                 releaseDate={new Date()}
-                                check={false}
+                                check={true}
                             />
                         ))}
                     </div>
