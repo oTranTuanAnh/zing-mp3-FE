@@ -67,7 +67,7 @@ export default function UpdatePass() {
                 enableReinitialize={true}>
                 <Form>
                         <div className="d-flex justify-content-center">
-                            <div className="card">
+                            <div className="card rounded-2xl">
                                 <p className="card-header text-gray-800 text-xl">Đổi mật khẩu</p>
                                 <div className="card-body">
                                     <div className="form-outline mb-4">

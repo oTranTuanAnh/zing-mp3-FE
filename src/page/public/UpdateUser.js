@@ -53,10 +53,6 @@ export default function UpdateUser() {
             })
         }
     }, [])
-    // const users1 = {}
-    // useEffect(() => {
-    //     setUser(users1)
-    // }, []);
 
     const uploadFile = (image) => {
         if (image === null) return
@@ -92,7 +88,7 @@ export default function UpdateUser() {
     if (id != null){
         return (
             <>
-                <Modal width={800} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
+                <Modal width={800} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} maskStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
                        footer={null}>
                     <Formik
                         initialValues={user}
@@ -109,7 +105,7 @@ export default function UpdateUser() {
                         }}
                     >
                         <Form>
-                            <div className="card">
+                            <div className="card rounded-2xl">
                                 <p className="card-header text-gray-800 text-xl">Cập nhật thông tin</p>
                                 <div className="row align-items-center no-gutters">
                                     <div className="col-md-6">

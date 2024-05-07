@@ -41,7 +41,7 @@ const SongItem = ({thumbnail, title, artists, sid, author, countLikes, countList
 
     };
     return (
-        <div className="col-md-4 song-item " onClick={()=>handleClick()}>
+        <div className="col-md-4 song-item hover:cursor-pointer" onClick={()=>handleClick()}>
             <div >
                 <div
                     className={'group flex p-3 rounded-md hover:bg-white hover:bg-opacity-10'}>

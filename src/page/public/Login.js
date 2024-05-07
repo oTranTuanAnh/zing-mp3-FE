@@ -72,7 +72,7 @@ export default function Login() {
                     }}>
                 <Form>
                     <div style={{textAlign: "center"}}>
-                        <div className="card mt-32">
+                        <div className="card mt-32 rounded-2xl">
                                 <div className="wrap-login100">
                                     <div className="login100-pic js-tilt">
                                         <img src="images/img-01.png" alt="IMG"/>

@@ -117,7 +117,7 @@ const ModalCreateSong = () => {
                     navigate("/")
                 }}>
                     <Form>
-                        <div className="card">
+                        <div className="card rounded-2xl">
                             <p className="card-header text-gray-800 text-xl">Tải nhạc lên</p>
                             <div className="row align-items-center no-gutters">
                                 <div className="col-md-5">
