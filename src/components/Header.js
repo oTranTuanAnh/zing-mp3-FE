@@ -1,7 +1,6 @@
 import icons from "../untis/icons";
 import Search from "./Search";
-import {Link, useNavigate} from "react-router-dom";
-import {CiSettings} from "react-icons/ci";
+import {useNavigate} from "react-router-dom";
 import MenuLogin from "./MenuLogin";
 import "../css_component/menuSetting.css"
 import MenuSetting from "./MenuSetting";
@@ -32,14 +31,8 @@ const Header = () => {
         }
     }, [isFlag])
 
-
-
-
     const [check, setCheck] = useState(false)
-    const [checkSetting, setChecksetting] = useState(false)
-
     const handleCheck = (isCheck) => {
-        setChecksetting(false);
         setCheck(isCheck);
     }
     // console.log(localStorage.getItem("role"))
@@ -58,18 +51,9 @@ const Header = () => {
                         </div>
                     </div>
                     <div style={{display: "flex"}}>
-                        {/*<div className="dev_setting">*/}
-                        {/*    <button type="button text-white" onClick={() => {*/}
-                        {/*        setChecksetting(!checkSetting)*/}
-                        {/*        setCheck(false)*/}
-                        {/*    }}>*/}
-                        {/*        <CiSettings style={{width: 40, height: 40, marginTop: 5, fill: 'white'}}/>*/}
-                        {/*    </button>*/}
-                        {/*</div>*/}
                         <div className="dev_logout">
                             <button onClick={() =>{
                                 setCheck(!check)
-                                setChecksetting(false);
                             }
 
                             }>
@@ -86,7 +70,6 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="form_menu" >
-                        <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting handler={handleCheck}></MenuSetting> : <></>}</div>
                         <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuAdmin handler={handleCheck}></MenuAdmin> : <></>}</div>
                     </div>
                 </div>
@@ -106,18 +89,9 @@ const Header = () => {
                             </div>
                         </div>
                         <div style={{display: "flex"}}>
-                            {/*<div className="dev_setting" >*/}
-                            {/*    <button type="button text-white" onClick={() => {*/}
-                            {/*        setChecksetting(!checkSetting)*/}
-                            {/*        setCheck(false)*/}
-                            {/*    }}>*/}
-                            {/*        <CiSettings style={{width: 40, height: 40, marginTop: 5, marginRight:20, fill: "white"}}/>*/}
-                            {/*    </button>*/}
-                            {/*</div>*/}
                             <div className="dev_logout">
                                 <button onClick={() =>{
                                     setCheck(!check)
-                                    setChecksetting(false);
                                 }}>
                                     <img src={img} style={{
                                         width: 40,
@@ -131,7 +105,6 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="form_menu" >
-                            <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting handler={handleCheck}></MenuSetting> : <></>}</div>
                             <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuLogOut handler={handleCheck}></MenuLogOut> : <></>}</div>
                         </div>
                     </div>
@@ -151,19 +124,9 @@ const Header = () => {
                     </div>
                 </div>
                 <div style={{display: "flex"}}>
-                    {/*<div className="dev_setting items-center mt-2 ml-2">*/}
-                    {/*    <button type="button" onClick={() => {*/}
-                    {/*        setChecksetting(!checkSetting)*/}
-                    {/*        setCheck(false)*/}
-                    {/*    }}>*/}
-                    {/*        <span className={'text-white'}><CiSettings size={35}/>  </span>*/}
-
-                    {/*    </button>*/}
-                    {/*</div>*/}
                     <div className="dev_logout items-center mt-2 ml-2">
                         <button onClick={() => {
                             setCheck(!check)
-                            setChecksetting(false);
                         }
 
                         }><span className={'text-white'}><FaRegCircleUser size={35}/></span>
@@ -173,7 +136,6 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="form_menu" >
-                    <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting handler={handleCheck}></MenuSetting> : <></>}</div>
                     <div style={{marginTop: "19px" , position : 'absolute' , marginLeft: '-17%' ,height :'0px'}}> {check ? <MenuLogin handler={handleCheck}></MenuLogin> : <></>}</div>
                 </div>
             </div>

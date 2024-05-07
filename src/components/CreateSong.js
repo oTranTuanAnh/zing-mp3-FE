@@ -155,7 +155,7 @@ const ModalCreateSong = () => {
                                             <label className="form-label uppercase" htmlFor="type">Thể loại</label>
                                             <Field className="form-control form-control-sm text-f rounded-full"
                                                    placeholder="Chọn thể loại"
-                                                   as="select" name="id_SongTypes.id" id="type">
+                                                   as="select" name="SongTypes.id" id="type">
                                                 {songTypes.map((i, key) => {
                                                     return (
                                                         <option key={key} value={i.id}>{i.name}</option>
