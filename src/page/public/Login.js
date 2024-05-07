@@ -3,8 +3,9 @@ import {Field, Form, Formik} from "formik";
 import axios from "axios";
 import {toast} from "react-toastify";
 import "../../modalLogin.css"
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {AppContext} from "../../Context/AppContext";
+import {Modal} from "antd";
 
 export default function Login() {
     let navigate = useNavigate();
@@ -44,8 +45,23 @@ export default function Login() {
     function next(){
         navigate("/register")
     }
+    const [isModalOpen, setIsModalOpen] = useState(true);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const  handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+        navigate("/")
+    };
     return (
         <>
+            <Modal width={800} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
             <Formik initialValues={{
                 userName: "",
                 password: ""
@@ -56,8 +72,7 @@ export default function Login() {
                     }}>
                 <Form>
                     <div style={{textAlign: "center"}}>
-                        <div className="limiter">
-
+                        <div className="card mt-32">
                                 <div className="wrap-login100">
                                     <div className="login100-pic js-tilt">
                                         <img src="images/img-01.png" alt="IMG"/>
@@ -80,7 +95,7 @@ export default function Login() {
                                                                                  aria-hidden="true"></i></span>
                                         </div>
                                         <div className="container-login100-form-btn">
-                                            <button className="login100-form-btn">
+                                            <button className="login100-form-btn h-[40px]">
                                                 Đăng nhập
                                             </button>
                                         </div>
@@ -94,7 +109,6 @@ export default function Login() {
                                             </button>
                                             <div>
                                                 <button onClick={back} className="txt2">
-
                                                     <i className="fa fa-long-arrow-left m-l-5"
                                                     ></i>
                                                     Quay lại
@@ -109,6 +123,7 @@ export default function Login() {
 
                 </Form>
             </Formik>
+            </Modal>
         </>
     )
 

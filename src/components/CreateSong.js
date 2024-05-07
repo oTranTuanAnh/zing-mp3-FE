@@ -18,12 +18,15 @@ const ModalCreateSong = () => {
     const [songs,setSongs] = useState({});
     const [songTypes, setSongTypes] = useState([]);
     const navigate = useNavigate();
+    const [imgname, setImgname] = useState('');
+    const [songname, setSongname] = useState('')
     const uploadFileImg = (image) => {
         if (image === null) return
         const imageRef = ref(storage, `IMG/${image.name}`);
         uploadBytes(imageRef, image).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setImageUrl(url);
+                setImgname(image.name);
                 console.log("image uploaded successfully", url);
                 console.log("image uploaded successfully", imageUrl);
                 songs.img_url = url;
@@ -38,6 +41,7 @@ const ModalCreateSong = () => {
         uploadBytes(urlRef, music).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setSongUrl(url);
+                setSongname(music.name);
                 console.log("song uploaded successfully", url);
                 console.log("song uploaded successfully", songUrl);
                 songs.song_url = url;
@@ -125,31 +129,32 @@ const ModalCreateSong = () => {
                                 <div className="col-md-7">
                                     <div className="card-body">
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="nameSong">Tên bài hát (<span
+                                            <label className="form-label uppercase" htmlFor="nameSong">Tên bài hát (<span
                                                 className="text-danger">*</span>)</label>
                                             <Field name="title" type="text" id="nameSong" placeholder="Nhập tên bài hát"
-                                                   className="form-control"/>
+                                                   className="form-control text-f rounded-full"/>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="singer">Tên ca sĩ</label>
+                                            <label className="form-label uppercase" htmlFor="singer">Tên ca sĩ</label>
                                             <Field name="singer" type="text" id="singer" placeholder="Nhập tên ca sĩ"
-                                                   className="form-control"/>
+                                                   className="form-control text-f rounded-full"/>
                                         </div>
 
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="album">Tên tác giả</label>
+                                            <label className="form-label uppercase" htmlFor="album">Tên tác giả</label>
                                             <Field name="author" type="text" id="album" placeholder="Nhập tên tác giả"
-                                                   className="form-control"/>
+                                                   className="form-control text-f rounded-full"/>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="description">Mô tả</label>
+                                            <label className="form-label uppercase" htmlFor="description">Mô tả</label>
                                             <Field name="description" component="textarea" id="description"
                                                    placeholder="Nhập mô tả"
-                                                   className="form-control"/>
+                                                   className="form-control text-f rounded-full"/>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="type">Thể loại</label>
-                                            <Field className="form-control form-control-sm" placeholder="Chọn thể loại"
+                                            <label className="form-label uppercase" htmlFor="type">Thể loại</label>
+                                            <Field className="form-control form-control-sm text-f rounded-full"
+                                                   placeholder="Chọn thể loại"
                                                    as="select" name="id_SongTypes.id" id="type">
                                                 {songTypes.map((i, key) => {
                                                     return (
@@ -159,29 +164,55 @@ const ModalCreateSong = () => {
                                             </Field>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="album">Album</label>
+                                            <label className="form-label uppercase" htmlFor="album">Album</label>
                                             <Field name="album" type="text" id="album" placeholder="Album"
-                                                   className="form-control"/>
+                                                   className="form-control text-f rounded-full"/>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="img_url">Ảnh</label>
-                                            <input type="file" id="img_url" className="form-control"
-                                                   onChange={(event) => {
-                                                       uploadFileImg(event.target.files[0])
-                                                   }}/>
+                                            <label className="form-label uppercase" htmlFor="img_url">Ảnh</label>
+                                            <div className="row file-uploader">
+                                                <label htmlFor="custom-file-upload1" className="col-md-8 filupp">
+                                                    <div className="wrapper">
+                                                        <span className="text-f">Chọn ảnh</span>
+                                                        <div className="file-upload">
+                                                            {/*<input type="file"/>*/}
+                                                            <input type="file"  id="custom-file-upload1" onChange={(event) => {
+                                                                uploadFileImg(event.target.files[0])
+                                                            }}/>
+                                                            <i className="fa fa-arrow-up"></i>
+                                                        </div>
+                                                        {imgname}
+                                                    </div>
+
+                                                </label>
+                                            </div>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="song_url">File nhạc</label>
-                                            <input type="file" id="song_url" className="form-control"
-                                                   onChange={(event) => {
-                                                       uploadFileSong(event.target.files[0])
-                                                   }}/>
+                                            <label className="form-label uppercase" htmlFor="song_url">File nhạc</label>
+                                            <div className="row file-uploader">
+                                                <label htmlFor="custom-file-upload2" className="col-md-8 filupp text-f">
+                                                    <div className="wrapper">
+                                                        <span className="text-f">Chọn tệp mp3</span>
+                                                        <div className="file-upload">
+                                                            {/*<input type="file"/>*/}
+                                                            <input type="file"
+                                                                   id="custom-file-upload2" onChange={(event) => {
+                                                                uploadFileSong(event.target.files[0])
+                                                            }}/>
+                                                            <i className="fa fa-arrow-up"></i>
+                                                        </div>
+                                                        {songname}
+                                                    </div>
+                                                </label>
+                                            </div>
                                         </div>
                                         <div className="my-4 text-center">
-                                            <button type="button" className="btn btn-default"
+                                            <button className="login100-form-btn w-30 m-auto h-12">Tạo bài
+                                                hát
+                                            </button>
+                                            <button type="button" className="mt-2 text-base text-f"
                                                     onClick={handleCancel}>Quay lại
                                             </button>
-                                            <button type="submit" className="btn btn-primary">Tạo bài hát</button>
                                         </div>
                                     </div>
                                 </div>

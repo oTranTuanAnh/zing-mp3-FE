@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 import axios from "axios";
 import * as Yup from "yup";
+import {Modal} from "antd";
 export default function Register() {
     // const [listMailCheck, setListEmailCheck] = useState([]);
     const [listUserCheck, setListUserCheck] = useState([]);
@@ -59,9 +60,25 @@ export default function Register() {
         // console.log(user)
         handleButtonClick(user) ;
     };
+    const [isModalOpen, setIsModalOpen] = useState(true);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const  handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+        navigate("/")
+    };
+
 
     return (
         <div>
+            <Modal width={800} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
             <Formik
                 initialValues={{
                     user
@@ -96,9 +113,9 @@ export default function Register() {
                 {({isSubmitting}) => (
                     <Form>
                         <div style={{textAlign: "center"}}>
-                                <div className="limiter">
+                                <div className="card mt-32">
                                     <div className="wrap-login100">
-                                        <div className="login100-pic js-tilt" data-tilt>
+                                        <div className="login100-pic js-tilt">
                                             <img src="images/img-01.png" alt="IMG"/>
                                         </div>
                                         <div className="login100-form validate-form">
@@ -136,7 +153,7 @@ export default function Register() {
 						</span>
                                             </div>
                                             <div className="container-login100-form-btn">
-                                                <button className="login100-form-btn">
+                                                <button className="login100-form-btn h-[40px]">
                                                     Đăng ký
                                                 </button>
                                             </div>
@@ -157,6 +174,7 @@ export default function Register() {
                     </Form>
                 )}
             </Formik>
+            </Modal>
 
 
         </div>

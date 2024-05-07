@@ -43,7 +43,7 @@ export default function UpdatePass() {
     };
     return (
         <>
-            <Modal width={1000} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
+            <Modal width={500} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
                    footer={null}>
             <Formik
                 initialValues={{}}
@@ -67,38 +67,38 @@ export default function UpdatePass() {
                 enableReinitialize={true}>
                 <Form>
                         <div className="d-flex justify-content-center">
-                            <div className="card mt-5 w-50">
+                            <div className="card">
                                 <p className="card-header text-gray-800 text-xl">Đổi mật khẩu</p>
                                 <div className="card-body">
                                     <div className="form-outline mb-4">
-                                        <label htmlFor="oldPassword">Mật khẩu cũ</label>
-                                        <Field className="form-control text-f" id="oldPassword" name={'oldPassword'}
+                                        <label htmlFor="oldPassword" className="uppercase">Mật khẩu cũ</label>
+                                        <Field className="form-control rounded-full text-f" id="oldPassword" name={'oldPassword'}
                                                type='password' placeholder="Nhập mật khẩu cũ" required/>
                                         <ErrorMessage className={'text-danger text-f'} name="oldPassword"
                                                       component="div"/>
                                     </div>
                                     <div className="form-outline mb-4">
-                                        <label htmlFor="password">Mật khẩu mới</label>
-                                        <Field className="form-control text-f" id="password" name={'password'}
+                                        <label htmlFor="password" className="uppercase">Mật khẩu mới</label>
+                                        <Field className="form-control rounded-full text-f" id="password" name={'password'}
                                                type='password' placeholder="Nhập mật khẩu mới"/>
                                         <ErrorMessage className={'text-danger text-f'} name="password" component="div"/>
                                     </div>
                                     <div className="form-outline mb-4">
-                                        <label htmlFor="confirmPassword">Nhập lại mật khẩu</label>
-                                        <Field className="form-control text-f" id="confirmPassword"
+                                        <label htmlFor="confirmPassword" className="uppercase">Nhập lại mật khẩu</label>
+                                        <Field className="form-control rounded-full text-f" id="confirmPassword"
                                                name={'confirmPassword'}
                                                placeholder="Nhập lại mật khẩu" type='password'/>
                                         <ErrorMessage className={'text-danger text-f'} name="confirmPassword"
                                                       component="div"/>
                                     </div>
-                                    <div className="text-center">
-                                        <button className="login100-form-btn w-[50%] m-auto">
-                                            Đổi mật khẩu
-                                        </button>
-                                        <button type="button" className="mt-2 text-base text-f"
-                                                onClick={handleCancel}>Quay lại
-                                        </button>
-                                    </div>
+                                </div>
+                                <div className="text-center">
+                                    <button className="login100-form-btn w-30 m-auto h-12">
+                                        Cập nhật
+                                    </button>
+                                    <button type="button" className="mt-2 text-base text-f"
+                                            onClick={handleCancel}>Quay lại
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@ export default function UpdatePass() {
         if (values.password === values.confirmPassword) {
             let userPass = {
                 password: values.password,
-                confirmPassword : values.confirmPassword
+                confirmPassword: values.confirmPassword
             }
             axios.put('http://localhost:8080/users/update/pass/' + id, userPass, config).then((res) => {
                 toast.success("Cập nhật thành công", {autoClose : 1500})

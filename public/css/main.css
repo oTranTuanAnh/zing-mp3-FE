@@ -153,8 +153,8 @@ iframe {
 
 .limiter {
   width: 100%;
-  height: 85vh;
-  margin: auto;
+  height: 100%;
+  margin-top: 100px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -179,7 +179,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 825px;
+  width: 100%;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -190,7 +190,7 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 50px 50px 33px 50px;
+  padding: 20px 20px 10px 20px;
   align-items: center;
 }
 
@@ -331,9 +331,6 @@ iframe {
   line-height: 1.5;
   color: #fff;
   text-transform: uppercase;
-
-  width: 100%;
-  height: 50px;
   border-radius: 25px;
   background: rgb(158,82,197);
   display: -webkit-box;

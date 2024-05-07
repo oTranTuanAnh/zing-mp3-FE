@@ -32,16 +32,17 @@ const SongItem = ({thumbnail, title, artists, sid, author, countLikes, countList
     const handleCount = ()=>{
         axios.put(`http://localhost:8080/songs/count/${sid}`).then((res) => {
             console.log("success")
+            toggleFlag();
         })
     }
     const handleClick = () => {
         handleCount();
         dispatch(findSongById(sid));
-        toggleFlag();
+
     };
     return (
-        <div className="col-md-4 song-item">
-            <div onClick={()=>handleClick()}>
+        <div className="col-md-4 song-item " onClick={()=>handleClick()}>
+            <div >
                 <div
                     className={'group flex p-3 rounded-md hover:bg-white hover:bg-opacity-10'}>
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
@@ -53,14 +54,14 @@ const SongItem = ({thumbnail, title, artists, sid, author, countLikes, countList
                     </div>
                     <div className={'ml-4 flex flex-1 flex-col'}>
                         <div>
-                            <div className="flex justify-between text-base font-medium">
+                            <div className="flex justify-between text-base font-medium mb-2">
                                 <h3>
                                     <Link to={`/detailSong/${sid}`}
                                           className="text-slate-900 font-semibold">{title}</Link>
                                 </h3>
                             </div>
-                            <p className="mb-2 text-slate-500 text-sm">{artists}</p>
-                            <p className="mb-2 text-slate-500 text-sm">{author}</p>
+                            <p className="mb-1 text-slate-500 text-sm">{artists}</p>
+                            <p className="mb-1 text-slate-500 text-sm">{author}</p>
                         </div>
                     </div>
                     <div  className="w-15">
