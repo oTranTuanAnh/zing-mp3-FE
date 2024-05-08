@@ -25,20 +25,12 @@ const ModalCreatePlayList = ({handler}) => {
         }
         return namePlayList;
     }
+    const [isFocused, setIsFocused] = useState(false);
 
-    const [isModalOpen, setIsModalOpen] = useState(true);
-
-    const  handleOk = () => {
-        setIsModalOpen(false);
-    };
-
-    const handleCancel = () => {
-        setIsModalOpen(false);
-        navigate("/")
-    };
+    const handleFocus = () => setIsFocused(true);
+    const handleBlur = () => setIsFocused(false);
     return (
 <>
-            {/*<Modal width={350} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>*/}
                 <Formik initialValues={{
                     name: "",
                     appUser: {
@@ -58,8 +50,9 @@ const ModalCreatePlayList = ({handler}) => {
                         onSubmit={(values, {resetForm}) => {
                             axios.post("http://localhost:8080/playlists/create", values).then(() => {
                                 toast.success("Tạo playlist thành công", {
-                                    position: toast.POSITION.BOTTOM_RIGHT
-                                }, {autoClose : 700})
+                                    position: toast.POSITION.BOTTOM_RIGHT,
+                                    autoClose:700
+                                })
                                 resetForm();
                                 handler(false)
                                 navigate("/showPlaylist")
@@ -68,26 +61,24 @@ const ModalCreatePlayList = ({handler}) => {
                         }}>
                     <Form>
                         <div className="card bg-[#34224f] rounded-xl mt-52">
-                            {/*<div className="row g-3 align-items-center"*/}
-                            {/*     style={{width: 400, marginLeft: 20, display: 'align-items-center'}}>*/}
                                 <p className="text-xl text-center text-white font-semibold mt-2">Tạo playlist mới</p>
                                 <div className="col-auto mb-2 mt-4">
                                     <ErrorMessage style={{color: 'red'}} className={'formik-error-message text-f text-white'}
                                                   name="name" component="div"/>
-                                    <Field name="name" type="text" className="h-[40px] mt-2 p-3 text-f text-white rounded-full w-full bg-[#493961] border-none outline-none focus:outline-none focus:border-none focus:bg-[#493961]"
+                                    <Field name="name" type="text" className={`h-[40px] mt-2 p-3 text-f text-white rounded-full w-full border-none outline-none ${isFocused? 'bg-[#493961]' : 'bg-[#493961]' }`}
                                            placeholder="Nhập tên playlist"
                                            id = "playlistText"
+                                           onFocus={handleFocus}
+                                           onBlur={handleBlur}
                                     /><br/>
                                 </div>
                                 <div className="text-center mt-2">
                                     <button type="submit" className="text-f rounded-full w-32 h-10">Tạo mới</button>
                                 </div>
-                            {/*</div>*/}
                         </div>
 
                     </Form>
                 </Formik>
-            {/*</Modal>*/}
 </>
     );
 };

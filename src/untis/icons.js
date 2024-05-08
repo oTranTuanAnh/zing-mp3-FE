@@ -23,6 +23,9 @@ import { RiFolderMusicLine } from "react-icons/ri";
 import { BiSolidPlaylist } from "react-icons/bi";
 import { FiUpload } from "react-icons/fi";
 import { AiOutlineEllipsis } from "react-icons/ai";
+import { BiUser } from "react-icons/bi";
+import { HiOutlinePencil } from "react-icons/hi";
+
 
 
 const icons = {
@@ -49,7 +52,9 @@ const icons = {
     RiFolderMusicLine,
     BiSolidPlaylist,
     FiUpload,
-    AiOutlineEllipsis
+    AiOutlineEllipsis,
+    BiUser,
+    HiOutlinePencil
 
 }
 export default icons
