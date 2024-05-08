@@ -3,7 +3,6 @@ import Search from "./Search";
 import {useNavigate} from "react-router-dom";
 import MenuLogin from "./MenuLogin";
 import "../css_component/menuSetting.css"
-import MenuSetting from "./MenuSetting";
 import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import MenuLogOut from "./MenuLogOut";
@@ -159,9 +158,8 @@ const Header = () => {
                     <div className="dev_logout items-center mt-2 ml-2">
                         <button onClick={() => {
                             setCheck(!check)
-                        }
-
-                        }><span className={'text-white'}><FaRegCircleUser size={35}/></span>
+                        }}>
+                            <span className={'text-white'}><FaRegCircleUser size={35}/></span>
                             <div/>
 
                         </button>
