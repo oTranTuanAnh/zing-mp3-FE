@@ -6,6 +6,9 @@ import {toast} from "react-toastify";
 import swal from "sweetalert";
 import {AppContext} from "../Context/AppContext";
 import {HiOutlinePencil} from "react-icons/hi";
+import {Modal} from "antd";
+import ModalCreatePlayList from "./ModanCreatePlayList";
+import ModalEditPlayList from "./ModalEditPlaylist";
 
 const ShowPlaylist = () => {
     const [checkDelete, setCheckDelete] = useState(false);
@@ -50,6 +53,19 @@ const ShowPlaylist = () => {
             })
         })
     }
+    const handleCheck = (isCheck) => {
+        setIsModalVisible(isCheck);
+    }
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const showModal = () => {
+        setIsModalVisible(true);  // Đặt trạng thái của modal là hiển thị
+    };
+    const handleOk = () => {
+        setIsModalVisible(false);  // Đặt trạng thái của modal là ẩn khi nhấn OK
+    };
+    const handleCancel = () => {
+        setIsModalVisible(false);  // Đặt trạng thái của modal là ẩn khi nhấn Cancel
+    };
 
     return (
         <>
@@ -69,33 +85,27 @@ const ShowPlaylist = () => {
                                 </div>
                                 <div className="flex items-center justify-center mt-2">
                                     <span className="text-xl text-f text-white font-semibold">{i.name}</span>
-                                    <div className="ml-2 h-[22px] text-f text-base rounded-lg text-white my-auto font-semibold" onClick={()=>{updatePlaylist(i.id)}}>
+                                    <div className="ml-2 h-[22px] text-f text-base rounded-lg text-white my-auto font-semibold"
+                                        onClick={showModal}>
                                         <HiOutlinePencil size={24}/>
                                     </div>
                                 </div>
                                 <p>Tạo bởi {i.appUser.userName}</p>
                             </div>
-                            // <tr>
-                            //     <th scope="row">{key + 1}</th>
-                            //     <td onClick={() => {
-                            //         // navigate("/viewPlaylist/" + i.id)
-                            //     }}>
-                            //         <button style={{color:"white"}}>{i.name}</button>
-                            //     </td>
-                            //     <td>
-                            //         <button onClick={()=>{updatePlaylist(i.id)}}>
-                            //             <MdOutlineBrowserUpdated style={{width: 30, height: 30, color: '#FFFFFF'}}/>
-                            //         </button>
-                            //     </td>
-                            //     <td>
-                            //         <button><MdDeleteOutline onClick={() => {
-                            //             deletePlaylist(i.id);
-                            //         }} style={{width: 30, height: 30, color: '#FFFFFF'}}/></button>
-                            //     </td>
-                            // </tr>
                         )
                     })
                     }
+                </div>
+                <div>
+                    <Modal
+                        width={350}
+                        visible={isModalVisible}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                        footer={null}
+                    >
+                        <ModalEditPlayList handler={handleCheck}/>
+                    </Modal>
                 </div>
 
                 {/*    </tbody>*/}
