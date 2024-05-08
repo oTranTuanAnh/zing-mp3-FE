@@ -12,7 +12,6 @@ export default function UpdateSong() {
     const [songUrl, setSongUrl] = useState(undefined);
     const [songs,setSongs] = useState({});
     const [songTypes, setSongTypes] = useState([]);
-    const [idUser, setIdUser] = useState(localStorage.getItem("idUser"));
     const idSong = useParams();
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(true);
@@ -20,17 +19,19 @@ export default function UpdateSong() {
     const [imgname, setImgname] = useState('');
     const [songname, setSongname] = useState('')
 
+    useEffect(() => {
+        axios.get("http://localhost:8080/songs/"+idSong.id).then((res)=>{
+            setSongs(res.data)
+        })
+    }, [idSong]);
 
     const uploadFileImg = (image) => {
         if (image === null) return
         const imageRef = ref(storage, `IMG/${image.name}`);
         uploadBytes(imageRef, image).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
-                setImageUrl(url);
                 setImgname(image.name);
-                console.log("image uploaded successfully", url);
-                console.log("image uploaded successfully", imageUrl);
-                songs.img_url = url;
+                setImageUrl(url);
                 localStorage.setItem("img_url", url);
             });
         });
@@ -41,10 +42,8 @@ export default function UpdateSong() {
         const urlRef = ref(storage, `Music/${music.name}`);
         uploadBytes(urlRef, music).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
-                setSongUrl(url);
                 setSongname(music.name);
-                console.log("song uploaded successfully", url);
-                console.log("song uploaded successfully", songUrl);
+                setSongUrl(url);
                 localStorage.setItem("song_url", url);
             });
         });
@@ -70,13 +69,6 @@ export default function UpdateSong() {
     }, []);
 
 
-    useEffect(() => {
-        axios.get("http://localhost:8080/songs/"+idSong.id).then((res)=>{
-            console.log(res.data)
-            setSongs(res.data)
-        })
-    }, [idSong]);
-
     return (
         <>
             <Modal width={1000} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
@@ -85,12 +77,8 @@ export default function UpdateSong() {
             }
                     enableReinitialize={true}
                     onSubmit={(value) => {
-                        if (localStorage.getItem("img_url") != null){
-                            value.img_url = localStorage.getItem("img_url");
-                        }
-                        if (localStorage.getItem("song_url")!= null){
-                            value.song_url = localStorage.getItem("song_url");
-                        }
+                        imageUrl? value.img_url = imageUrl : value.img_url = songs.img_url;
+                        songUrl? value.song_url = songUrl : value.song_url = songs.song_url;
                         axios.put("http://localhost:8080/songs/user/update", value).then((res)=>{
                             toggleFlag();
                             toast.success(" Cập nhật hát thành công ", {
@@ -106,7 +94,7 @@ export default function UpdateSong() {
                         <p className="card-header text-gray-800 text-xl">Cập nhật bài hát</p>
                         <div className="row align-items-center no-gutters">
                             <div className="col-md-5">
-                                <img name="url_img"
+                                <img name="img_url"
                                      src={songs.img_url == null ? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                                          : songs.img_url}
                                      className="img-fluid" alt=""/>
@@ -139,7 +127,7 @@ export default function UpdateSong() {
                                     <div className="form-group mb-2">
                                         <label className="form-label uppercase" htmlFor="type">Thể loại</label>
                                         <Field className="form-control form-control-sm text-f rounded-full" placeholder="Chọn thể loại"
-                                               as="select" name="id_SongTypes.id" id="type">
+                                               as="select" name="songTypes.id" id="type">
                                             {songTypes.map((i, key) => {
                                                 return (
                                                     <option key={key} value={i.id}>{i.name}</option>

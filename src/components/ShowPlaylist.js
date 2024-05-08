@@ -19,7 +19,7 @@ const ShowPlaylist = () => {
 
     const idUser = localStorage.getItem("idUser");
     useEffect(() => {
-        axios.get("http://localhost:8080/playlists/findByUserId/" + idUser).then((res) => {
+        axios.get("http://localhost:8080/playlist/user/" + idUser).then((res) => {
             if (res.data !== []){
                 setList(res.data);
             } else {
@@ -40,17 +40,18 @@ const ShowPlaylist = () => {
                     cancel: true,
                     confirm: true
                 },
-            }).then(r => {
-                if (r) {
-                    axios.delete("http://localhost:8080/songs/" + id)
-                        .then(() => {
-                                setCheckDelete(!checkDelete)
-                                toggleFlag()
-                                toast.success("Xóa thành công!", {autoClose: 700})
-                            }
-                        )
-                }
             })
+            //     .then(r => {
+            //     if (r) {
+            //         axios.delete("http://localhost:8080/songs/" + id)
+            //             .then(() => {
+            //                     setCheckDelete(!checkDelete)
+            //                     toggleFlag()
+            //                     toast.success("Xóa thành công!", {autoClose: 700})
+            //                 }
+            //             )
+            //     }
+            // })
         })
     }
     const handleCheck = (isCheck) => {
@@ -107,9 +108,6 @@ const ShowPlaylist = () => {
                         <ModalEditPlayList handler={handleCheck}/>
                     </Modal>
                 </div>
-
-                {/*    </tbody>*/}
-                {/*</table>*/}
             </div>
         </>
     );
