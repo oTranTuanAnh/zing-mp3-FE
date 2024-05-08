@@ -12,8 +12,9 @@ import {FaRegCircleUser} from "react-icons/fa6";
 import {AppContext} from "../Context/AppContext";
 import {Modal} from "antd";
 import ModalCreatePlayList from "./ModanCreatePlayList";
+import {BiUser} from "react-icons/bi";
 
-const {IoIosArrowRoundBack, IoIosArrowRoundForward, AiOutlineSearch} = icons
+const {IoIosArrowRoundBack, IoIosArrowRoundForward} = icons
 const Header = () => {
     const {isFlag } = useContext(AppContext);
 
@@ -47,10 +48,6 @@ const Header = () => {
     }, [isFlag])
 
     const [check, setCheck] = useState(false)
-    // const handleCheck = (isCheck) => {
-    //     setCheck(isCheck);
-    // }
-    // console.log(localStorage.getItem("role"))
     if (localStorage.getItem("idUser") !== null) {
         if (localStorage.getItem("role") === "ROLE_ADMIN") {
             return (
@@ -115,7 +112,7 @@ const Header = () => {
                                         marginLeft: 2,
                                         marginRight: 30,
                                         borderRadius: 20
-                                    }}onClick={showModal}/>
+                                    }} onClick={showModal}/>
                                 </button>
                             </div>
                         </div>
@@ -132,12 +129,6 @@ const Header = () => {
                                     <MenuLogOut handler={handleCheck}/>
                                 </Modal>
                             </div>
-                        {/*    <div style={{*/}
-                        {/*        marginTop: "149px",*/}
-                        {/*        position: 'absolute',*/}
-                        {/*        marginLeft: '-14%',*/}
-                        {/*        height: '0px'*/}
-                        {/*    }}> {check ? <MenuLogOut handler={handleCheck}></MenuLogOut> : <></>}</div>*/}
                         </div>
                     </div>
                 </>
@@ -158,17 +149,27 @@ const Header = () => {
                 <div style={{display: "flex"}}>
                     <div className="dev_logout items-center mt-2 ml-2">
                         <button onClick={() => {
-                            setCheck(!check)
+                            showModal()
                         }
-
-                        }><span className={'text-white'}><FaRegCircleUser size={35}/></span>
+                        }><span className="bg-red-500"><BiUser className="rounded-full p-2 text-gradient bg-gradient-to-r from-purple-100  via-blue-100 to-pink-200 " size={40}/></span>
                             <div/>
 
                         </button>
                     </div>
                 </div>
-                <div className="form_menu" >
-                    <div style={{marginTop: "19px" , position : 'absolute' , marginLeft: '-17%' ,height :'0px'}}> {check ? <MenuLogin handler={handleCheck}></MenuLogin> : <></>}</div>
+                <div className="form_menu">
+                    <div>
+                        <Modal
+                            style={{top: "10px", right: "30px", position: 'fixed'}}
+                            width={350}
+                            visible={isModalVisible}
+                            onOk={handleOk}
+                            onCancel={handleCancel}
+                            footer={null}
+                        >
+                            <MenuLogin handler={handleCheck}/>
+                        </Modal>
+                    </div>
                 </div>
             </div>
         )

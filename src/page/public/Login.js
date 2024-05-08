@@ -30,15 +30,14 @@ export default function Login() {
                 localStorage.setItem("role", res.data.authorities[0].authority)
                 localStorage.setItem("token", res.data.token)
                 console.log("role:",localStorage.getItem("role"))
-
                 navigate("/")
-
                 toast.success("Đăng nhập thành công", {
-                    position: toast.POSITION.BOTTOM_RIGHT
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                    autoClose: 700
                 })
             }
         }).catch(() => {
-            toast.error('Thông tin sai')
+            toast.error('Thông tin sai', {autoClose:700})
             navigate("/login")
         })
     }
