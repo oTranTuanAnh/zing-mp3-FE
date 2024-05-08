@@ -150,7 +150,6 @@ const Header = () => {
                         <button onClick={showModal}>
                         <span className="bg-red-500"><BiUser className="rounded-full p-2 text-gradient bg-gradient-to-r from-purple-100  via-blue-100 to-pink-200 " size={40}/></span>
                             <div/>
-
                         </button>
                     </div>
                 </div>
